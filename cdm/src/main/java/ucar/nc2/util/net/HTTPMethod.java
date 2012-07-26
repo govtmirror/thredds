@@ -295,9 +295,12 @@ public void close()
     }
     if (executed) {
         consumeContent();
-    } else if(method != null)
-        method.abort();
-    if(method != null) method.releaseConnection();
+    } else if(method != null) {
+//        method.abort();
+    }
+    if(method != null) {
+        method.releaseConnection();
+    }
     closed = true;
     session.removeMethod(this);
 }
@@ -307,7 +310,7 @@ public void consumeContent()
     //try {
     //InputStream st = method.getResponseBodyAsStream();
     //while((st.skip(10000) >= 0));
-    method.abort();
+//    method.abort();
     //} catch (IOException e) {}
 }
 
