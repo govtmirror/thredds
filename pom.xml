@@ -169,14 +169,14 @@
 
   <distributionManagement>
     <repository>
-      <id>unidata-releases</id>
-      <name>UNIDATA Releases</name>
-      <url>https://artifacts.unidata.ucar.edu/content/repositories/unidata-releases/</url>
+      <id>cida-tds-releases</id>
+      <name>CIDA TDS Releases</name>
+      <url>http://internal.cida.usgs.gov/maven/content/repositories/cida-tds-releases</url>
     </repository>
     <snapshotRepository>
-      <id>unidata-snapshots</id>
-      <name>UNIDATA Snapshots</name>
-      <url>https://artifacts.unidata.ucar.edu/content/repositories/unidata-snapshots/</url>
+      <id>cida-tds-snapshots</id>
+      <name>CIDA TDS SNAPSHOTS</name>
+      <url>http://internal.cida.usgs.gov/maven/content/repositories/cida-tds-snapshots</url>
     </snapshotRepository>
   </distributionManagement>
 
