@@ -44,9 +44,9 @@
   </mailingLists>
 
   <scm>
-    <url>https://github.com/Unidata/thredds/</url>
-    <connection>scm:git:https://github.com/Unidata/thredds/</connection>
-    <developerConnection>scm:git:git@github.com:Unidata/thredds.git</developerConnection>
+    <url>https://github.com/USGS-CIDA/thredds/</url>
+    <connection>scm:git:https://github.com/USGS-CIDA/thredds/</connection>
+    <developerConnection>scm:git:git@github.com:USGS-CIDA/thredds.git</developerConnection>
   </scm>
 
   <!-- ===========================================================
