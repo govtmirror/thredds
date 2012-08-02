@@ -295,10 +295,10 @@ private void openConnection(String urlString, Command command) throws IOExceptio
     String encoding = (h == null) ? null : h.getValue();
     //if (encoding != null) LogStream.out.println("encoding= " + encoding);
 
-    if (encoding != null && encoding.equals("deflate")) {
+    if ("deflate".equals(encoding)) {
       is = new BufferedInputStream(new InflaterInputStream(is), 1000);
 
-    } else if (encoding != null && encoding.equals("gzip")) {
+    } else if ("gzip".equals(encoding)) {
       is = new BufferedInputStream(new GZIPInputStream(is), 1000);
     }
 
@@ -311,6 +311,26 @@ private void openConnection(String urlString, Command command) throws IOExceptio
   } finally {
     // Release the connection.
     if (_session != null) _session.close();
+    
+    if (is != null) {
+      try {
+        // Verify that InputStream isntance is completely consumed. This is
+        // typically required to allow the connection to be reused in the 
+        // connection pool.  It's also done as a courtesy to the server so that
+        // the connection isn't blocked pending further output.
+        int consumed = 0;
+        int available;
+        while ((available = is.available()) > 0) {
+          consumed += is.skip(available);
+        }
+        // TODO: log bytes consumed as warning, protocol error on server or client?
+      } catch (IOException e) {
+        // TODO: log exception
+      }
+      try {
+        is.close();
+      } catch (IOException e) { /* don't care */ }
+    }
   }
 }
 
